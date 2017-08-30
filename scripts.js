@@ -80,7 +80,20 @@ $(window).scroll(function(){
        menuItems
          .parent().removeClass("active")
          .end().filter("[href=#"+id+"]").parent().addClass("active");
-   }                   
+   }    
+   // NAV TRANSITION AND ANIMATION
+   var navHeight = $('header').outerHeight();
+   var sectionHeight = $('.bannerBG').outerHeight() - navHeight;
+   var headerHeight = 400;
+
+   if ($(document).scrollTop() > sectionHeight){
+     $("header").css("background-color", "#E1E1E1");
+   } else if ($(document).scrollTop() < (sectionHeight - headerHeight)) {
+     $("header").css("background-color", "rgba(34,34,34,0.2)");
+   } else {
+     $("header").css("background-color", "rgba(255,255,255,0.5)");
+   }
+
 });
 
 $(document).ready(function() {
