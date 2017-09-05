@@ -3,6 +3,7 @@
 
 /* Navbar */
 header {
+    background-color: rgba(255,255,255,0.5);
     height: 60px;
     position: fixed;
     top: 0;
@@ -41,7 +42,7 @@ header {
             width: 50%;
             float: left;
             .accordionButton { 
-                color: $white; 
+                color: $black; 
                 width: 100%;
                 height: 32px;
                 float: left;
