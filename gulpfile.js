@@ -32,11 +32,11 @@ gulp.task('styles', function() {
   .pipe(gulp.dest('./css'))
 });
 
-// gulp.task('scripts', function() {
-//   return gulp.src('./assets/js/*.js')
-//     .pipe(concat('main.min.js'))
-//     .pipe(gulpIf('*.js', uglify()))
-//     .pipe(gulp.dest('./resource-bundles/CC_Emedco_Theme.resource/dist/js'));
-// });
+gulp.task('scripts', function() {
+  return gulp.src('./assets/js/*.js')
+    .pipe(concat('main.min.js'))
+    .pipe(gulpIf('*.js', uglify()))
+    .pipe(gulp.dest(''));
+});
 
-gulp.task('default', ['minify','styles']);
+gulp.task('default', ['minify','styles','scripts']);

@@ -37,66 +37,37 @@ function hasScrolled() {
     lastScrollTop = st;
 }
 
-// Cache selectors
-var lastId,
-    topMenu = $("#top-menu"),
-    topMenuHeight = topMenu.outerHeight()+15,
-    // All list items
-    menuItems = topMenu.find("a"),
-    // Anchors corresponding to menu items
-    scrollItems = menuItems.map(function(){
-      var item = $($(this).attr("href"));
-      if (item.length) { return item; }
-    });
+$(document).ready(function() {
 
-// Bind click handler to menu items
-// so we can get a fancy scroll animation
-menuItems.click(function(e){
-  var href = $(this).attr("href"),
-      offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
-  $('html, body').stop().animate({ 
-      scrollTop: offsetTop
-  }, 900);
-  e.preventDefault();
-});
+  var scrollPadding = 30;
+// Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      event.preventDefault();
+      // Store hash
+      var hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top - scrollPadding
+      }, 900, function(){
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
 
-// Bind to scroll
-$(window).scroll(function(){
-   // Get container scroll position
-   var fromTop = $(this).scrollTop()+topMenuHeight;
-   
-   // Get id of current scroll item
-   var cur = scrollItems.map(function(){
-     if ($(this).offset().top < fromTop)
-       return this;
-   });
-   // Get the id of the current element
-   cur = cur[cur.length-1];
-   var id = cur && cur.length ? cur[0].id : "";
-   
-   if (lastId !== id) {
-       lastId = id;
-       // Set/remove active class
-       menuItems
-         .parent().removeClass("active")
-         .end().filter("[href=#"+id+"]").parent().addClass("active");
-   }    
+  /* 
    // NAV TRANSITION AND ANIMATION
    var navHeight = $('header').outerHeight();
-   var sectionHeight = $('.bannerBG').outerHeight() - navHeight;
-   var headerHeight = 400;
+   var sectionHeight = $('.hero').outerHeight() - navHeight;
 
    if ($(document).scrollTop() > sectionHeight){
      $("header").css("background-color", "#E1E1E1");
-   } else if ($(document).scrollTop() < (sectionHeight - headerHeight)) {
-     $("header").css("background-color", "rgba(34,34,34,0.2)");
    } else {
      $("header").css("background-color", "rgba(255,255,255,0.5)");
    }
-
-});
-
-$(document).ready(function() {
+   */
+   
      
     //ACCORDION BUTTON ACTION (ON CLICK DO THE FOLLOWING)
     $('.accordionButton').click(function() {
@@ -132,3 +103,4 @@ $(document).ready(function() {
     $('.accordionContent').hide();
 
 });
+
