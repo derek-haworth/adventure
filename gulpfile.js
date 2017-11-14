@@ -39,4 +39,5 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest(''));
 });
 
-gulp.task('default', ['minify','styles','scripts']);
+// gulp.task('default', ['minify','styles','scripts']);
+gulp.task('default', ['styles','scripts']);
