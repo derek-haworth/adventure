@@ -19,6 +19,7 @@
     box-shadow: 0 0 6px 0 rgba(30,45,62,.09);
     height: 100%;
     margin: 0 0 30px 0;
+    min-height: 140px;
     @include transition(box-shadow .2s ease);
     &:hover {
         box-shadow: 0 10px 15px 0 rgba(30,45,62,.04), 0 0 50px 0 rgba(31,44,60,.05);
